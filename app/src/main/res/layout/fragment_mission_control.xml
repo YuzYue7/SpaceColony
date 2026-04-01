@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvMissionTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mission Control"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:id="@+id/tvMissionHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Select 2 or 3 crew members to launch a mission."
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnLaunchMission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Launch Mission"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btnReturnToQuartersFromMission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Return Selected to Quarters"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btnBackHomeFromMission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back to Home"
+        android:layout_marginBottom="12dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerMissionCrew"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:id="@+id/tvThreatInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Threat info will appear here"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:id="@+id/tvCurrentActor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Current actor will appear here"
+        android:layout_marginBottom="12dp" />
+
+    <LinearLayout
+        android:id="@+id/layoutActionButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        android:layout_marginBottom="12dp">
+
+        <Button
+            android:id="@+id/btnAttack"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Attack" />
+
+        <Button
+            android:id="@+id/btnDefend"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Defend" />
+
+        <Button
+            android:id="@+id/btnSpecial"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Special" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvMissionLogTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mission Log"
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:id="@+id/tvMissionLog"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="No mission launched yet." />
+    </ScrollView>
+</LinearLayout>

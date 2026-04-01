@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <TextView
+        android:id="@+id/tvSimulatorTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Simulator"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnTrainSelected"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Train Selected"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btnReturnToQuarters"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Return Selected to Quarters"
+        android:layout_marginBottom="8dp" />
+
+    <Button
+        android:id="@+id/btnBackHomeFromSimulator"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Back to Home"
+        android:layout_marginBottom="12dp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerSimulator"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>

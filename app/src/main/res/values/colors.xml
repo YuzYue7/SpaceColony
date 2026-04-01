@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+
+    <color name="sc_background">#F4F1F8</color>
+    <color name="sc_surface">#FFFFFF</color>
+    <color name="sc_surface_alt">#EEE8F5</color>
+
+    <color name="sc_primary">#6C4AB6</color>
+    <color name="sc_primary_dark">#55349A</color>
+    <color name="sc_accent">#5DA9E9</color>
+
+    <color name="sc_text_primary">#1F1B24</color>
+    <color name="sc_text_secondary">#5F5A66</color>
+    <color name="sc_text_on_primary">#FFFFFF</color>
+
+    <color name="sc_success">#2E9E5B</color>
+    <color name="sc_warning">#E7A93B</color>
+    <color name="sc_danger">#D9534F</color>
+
+    <color name="sc_pilot">#5DA9E9</color>
+    <color name="sc_engineer">#E7A93B</color>
+    <color name="sc_medic">#41B883</color>
+    <color name="sc_scientist">#8B5CF6</color>
+    <color name="sc_soldier">#D9534F</color>
+</resources>

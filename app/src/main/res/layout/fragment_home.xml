@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app_gradient">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Space Colony"
+            android:textColor="@color/sc_text_primary"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Colony command center"
+            android:textColor="@color/sc_text_secondary"
+            android:textSize="14sp"
+            android:layout_marginBottom="16dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Colony Overview"
+                android:textColor="@color/sc_text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="10dp" />
+
+            <TextView
+                android:id="@+id/tvSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Summary"
+                android:textColor="@color/sc_text_secondary"
+                android:textSize="16sp"
+                android:lineSpacingExtra="3dp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Quick Actions"
+            android:textColor="@color/sc_text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnCreateDemoCrew"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Add Demo Crew"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/sc_text_on_primary"
+            android:background="@drawable/bg_button_primary"
+            android:minHeight="52dp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Refresh Summary"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/sc_text_primary"
+            android:background="@drawable/bg_button_secondary"
+            android:minHeight="52dp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnSaveGame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Game"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/sc_text_primary"
+            android:background="@drawable/bg_button_secondary"
+            android:minHeight="52dp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnLoadGame"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Load Game"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/sc_text_primary"
+            android:background="@drawable/bg_button_secondary"
+            android:minHeight="52dp"
+            android:layout_marginBottom="18dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Navigation"
+            android:textColor="@color/sc_text_primary"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnGoRecruit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Recruit Crew"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/sc_text_on_primary"
+            android:background="@drawable/bg_button_primary"
+            android:minHeight="52dp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnGoCrewList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Crew List"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/sc_text_on_primary"
+            android:background="@drawable/bg_button_primary"
+            android:minHeight="52dp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnGoQuarters"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Go to Quarters"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/sc_text_on_primary"
+            android:background="@drawable/bg_button_primary"
+            android:minHeight="52dp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnGoSimulator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Go to Simulator"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/sc_text_on_primary"
+            android:background="@drawable/bg_button_primary"
+            android:minHeight="52dp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnGoMissionControl"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Go to Mission Control"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/sc_text_on_primary"
+            android:background="@drawable/bg_button_primary"
+            android:minHeight="52dp"
+            android:layout_marginBottom="10dp" />
+
+        <Button
+            android:id="@+id/btnGoStatistics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="View Statistics"
+            android:textAllCaps="false"
+            android:textStyle="bold"
+            android:textColor="@color/sc_text_on_primary"
+            android:background="@drawable/bg_button_primary"
+            android:minHeight="52dp" />
+
+    </LinearLayout>
+</ScrollView>
