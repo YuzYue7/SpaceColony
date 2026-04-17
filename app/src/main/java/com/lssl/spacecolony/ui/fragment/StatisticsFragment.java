@@ -1,15 +1,16 @@
 package com.lssl.spacecolony.ui.fragment;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.graphics.Color;
 import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.github.mikephil.charting.charts.BarChart;
@@ -117,16 +118,13 @@ public class StatisticsFragment extends Fragment {
 
             crewStatsBuilder
                     .append(crewMember.getName())
-                    .append(" (").append(crewMember.getSpecialization()).append(")\n")
+                    .append(" • ").append(crewMember.getSpecialization()).append("\n")
                     .append("Location: ").append(crewMember.getLocation()).append("\n")
-                    .append("Exp: ").append(crewMember.getExperience()).append("\n")
-                    .append("Missions Attempted: ").append(stats.getMissionsAttempted()).append("\n")
-                    .append("Missions Won: ").append(stats.getMissionsWon()).append("\n")
-                    .append("Missions Lost: ").append(stats.getMissionsLost()).append("\n")
-                    .append("Training Sessions: ").append(stats.getTrainingSessions()).append("\n")
-                    .append("Total Damage Dealt: ").append(stats.getTotalDamageDealt()).append("\n")
-                    .append("Times Defeated: ").append(stats.getTimesDefeated()).append("\n")
-                    .append("-------------------------\n");
+                    .append("Exp: ").append(crewMember.getExperience()).append("  |  ")
+                    .append("Trainings: ").append(stats.getTrainingSessions()).append("\n")
+                    .append("Wins: ").append(stats.getMissionsWon()).append("  |  ")
+                    .append("Losses: ").append(stats.getMissionsLost()).append("  |  ")
+                    .append("Damage: ").append(stats.getTotalDamageDealt()).append("\n\n");
         }
 
         String colonyStatsText = "Total Crew: " + totalCrew + "\n"
@@ -149,20 +147,33 @@ public class StatisticsFragment extends Fragment {
     }
 
     private void setupBarChart() {
+        barChartStats.setDrawGridBackground(false);
+        barChartStats.setDrawBarShadow(false);
+        barChartStats.setNoDataText("No statistics yet");
+        barChartStats.setNoDataTextColor(ContextCompat.getColor(requireContext(), R.color.sc_text_secondary));
+        barChartStats.getAxisRight().setEnabled(false);
+        barChartStats.setExtraBottomOffset(10f);
+
         Description description = new Description();
         description.setText("Colony performance");
+        description.setTextColor(ContextCompat.getColor(requireContext(), R.color.sc_text_secondary));
         barChartStats.setDescription(description);
 
         XAxis xAxis = barChartStats.getXAxis();
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setGranularity(1f);
         xAxis.setDrawGridLines(false);
+        xAxis.setTextColor(ContextCompat.getColor(requireContext(), R.color.sc_text_secondary));
+        xAxis.setAxisLineColor(ContextCompat.getColor(requireContext(), R.color.sc_surface_line));
 
-        YAxis rightAxis = barChartStats.getAxisRight();
-        rightAxis.setEnabled(false);
+        YAxis leftAxis = barChartStats.getAxisLeft();
+        leftAxis.setTextColor(ContextCompat.getColor(requireContext(), R.color.sc_text_secondary));
+        leftAxis.setGridColor(ContextCompat.getColor(requireContext(), R.color.sc_surface_line));
+        leftAxis.setAxisLineColor(ContextCompat.getColor(requireContext(), R.color.sc_surface_line));
 
         Legend legend = barChartStats.getLegend();
         legend.setEnabled(false);
+        barChartStats.setBackgroundColor(Color.TRANSPARENT);
     }
 
     private void updateBarChart(int trainings, int wins, int losses, int damage) {
@@ -174,12 +185,13 @@ public class StatisticsFragment extends Fragment {
 
         BarDataSet dataSet = new BarDataSet(entries, "Statistics");
         dataSet.setColors(
-                Color.rgb(66, 133, 244),
-                Color.rgb(52, 168, 83),
-                Color.rgb(234, 67, 53),
-                Color.rgb(251, 188, 5)
+                ContextCompat.getColor(requireContext(), R.color.sc_accent),
+                ContextCompat.getColor(requireContext(), R.color.sc_success),
+                ContextCompat.getColor(requireContext(), R.color.sc_danger),
+                ContextCompat.getColor(requireContext(), R.color.sc_warning)
         );
-        dataSet.setValueTextSize(12f);
+        dataSet.setValueTextColor(ContextCompat.getColor(requireContext(), R.color.sc_text_primary));
+        dataSet.setValueTextSize(11f);
 
         BarData barData = new BarData(dataSet);
         barData.setBarWidth(0.6f);
@@ -195,11 +207,18 @@ public class StatisticsFragment extends Fragment {
     private void setupPieChart() {
         Description description = new Description();
         description.setText("Crew by location");
+        description.setTextColor(ContextCompat.getColor(requireContext(), R.color.sc_text_secondary));
         pieChartLocations.setDescription(description);
         pieChartLocations.setUsePercentValues(false);
         pieChartLocations.setDrawHoleEnabled(true);
+        pieChartLocations.setHoleColor(ContextCompat.getColor(requireContext(), R.color.sc_surface));
+        pieChartLocations.setTransparentCircleColor(Color.TRANSPARENT);
         pieChartLocations.setCenterText("Crew");
+        pieChartLocations.setCenterTextColor(ContextCompat.getColor(requireContext(), R.color.sc_text_primary));
+        pieChartLocations.setEntryLabelColor(ContextCompat.getColor(requireContext(), R.color.sc_text_primary));
         pieChartLocations.setEntryLabelTextSize(12f);
+        pieChartLocations.getLegend().setTextColor(ContextCompat.getColor(requireContext(), R.color.sc_text_secondary));
+        pieChartLocations.setBackgroundColor(Color.TRANSPARENT);
     }
 
     private void updatePieChart() {
@@ -220,11 +239,12 @@ public class StatisticsFragment extends Fragment {
 
         PieDataSet dataSet = new PieDataSet(entries, "Locations");
         dataSet.setColors(
-                Color.rgb(66, 133, 244),
-                Color.rgb(52, 168, 83),
-                Color.rgb(251, 188, 5),
-                Color.rgb(234, 67, 53)
+                ContextCompat.getColor(requireContext(), R.color.sc_info),
+                ContextCompat.getColor(requireContext(), R.color.sc_success),
+                ContextCompat.getColor(requireContext(), R.color.sc_warning),
+                ContextCompat.getColor(requireContext(), R.color.sc_danger)
         );
+        dataSet.setValueTextColor(ContextCompat.getColor(requireContext(), R.color.sc_text_primary));
         dataSet.setValueTextSize(12f);
 
         PieData pieData = new PieData(dataSet);

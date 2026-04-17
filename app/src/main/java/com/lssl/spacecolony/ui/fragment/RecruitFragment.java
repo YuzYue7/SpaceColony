@@ -63,6 +63,11 @@ public class RecruitFragment extends Fragment {
                 return;
             }
 
+            if (storage.containsCrewName(name)) {
+                Toast.makeText(requireContext(), "A crew member with this name already exists.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
             Specialization specialization = (Specialization) spinnerSpecialization.getSelectedItem();
             CrewMember crewMember = CrewFactory.createCrewMember(name, specialization);
             storage.add(crewMember);

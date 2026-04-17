@@ -7,10 +7,10 @@
     android:padding="16dp">
 
     <TextView
-        android:id="@+id/tvSimulatorTitle"
+        android:id="@+id/tvMedbayTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Simulator"
+        android:text="Medbay"
         android:textColor="@color/sc_text_primary"
         android:textSize="28sp"
         android:textStyle="bold" />
@@ -20,7 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:layout_marginBottom="14dp"
-        android:text="Train selected crew to gain experience"
+        android:text="Recover defeated crew members and return them to Quarters"
         android:textColor="@color/sc_text_secondary"
         android:textSize="14sp" />
 
@@ -32,29 +32,36 @@
         android:orientation="vertical"
         android:padding="14dp">
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Recovery Rule"
+            android:textColor="@color/sc_text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvMedbayHint"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Recovered crew return to Quarters with 50% energy and lose 1 experience."
+            android:textColor="@color/sc_text_secondary"
+            android:textSize="13sp" />
+
         <Button
-            android:id="@+id/btnTrainSelected"
+            android:id="@+id/btnRecoverToQuarters"
             android:layout_width="match_parent"
             android:layout_height="54dp"
-            android:background="@drawable/bg_button_primary"
-            android:text="Train Selected"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_button_success"
+            android:text="Recover Selected to Quarters"
             android:textAllCaps="false"
             android:textColor="@color/sc_text_on_primary"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btnReturnToQuarters"
-            android:layout_width="match_parent"
-            android:layout_height="54dp"
-            android:layout_marginTop="10dp"
-            android:background="@drawable/bg_button_secondary"
-            android:text="Return Selected to Quarters"
-            android:textAllCaps="false"
-            android:textColor="@color/sc_text_primary"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/btnBackHomeFromSimulator"
+            android:id="@+id/btnBackHomeFromMedbay"
             android:layout_width="match_parent"
             android:layout_height="54dp"
             android:layout_marginTop="10dp"
@@ -66,7 +73,7 @@
     </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerSimulator"
+        android:id="@+id/recyclerMedbay"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"

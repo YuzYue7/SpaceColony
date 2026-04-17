@@ -5,13 +5,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.lssl.spacecolony.R;
 import com.lssl.spacecolony.model.crew.CrewMember;
+import com.lssl.spacecolony.model.enums.Location;
 import com.lssl.spacecolony.model.enums.Specialization;
 
 import java.util.ArrayList;
@@ -53,14 +57,17 @@ public class SelectableCrewAdapter extends RecyclerView.Adapter<SelectableCrewAd
         CrewMember crewMember = crewList.get(position);
 
         holder.tvCrewName.setText(crewMember.getName());
-        holder.tvCrewSpec.setText("Specialization: " + crewMember.getSpecialization());
+        holder.tvCrewSpec.setText(crewMember.getSpecialization().name());
+        holder.tvCrewSpec.setTextColor(getSpecColor(holder, crewMember.getSpecialization()));
         holder.tvCrewStats.setText(
-                "Skill: " + crewMember.getBaseSkill()
-                        + " | Exp: " + crewMember.getExperience()
-                        + " | Res: " + crewMember.getResilience()
-                        + " | Energy: " + crewMember.getEnergy() + "/" + crewMember.getMaxEnergy()
+                "Skill " + crewMember.getBaseSkill()
+                        + "  •  Exp " + crewMember.getExperience()
+                        + "  •  Res " + crewMember.getResilience()
+                        + "  •  Energy " + crewMember.getEnergy() + "/" + crewMember.getMaxEnergy()
         );
-        holder.tvCrewLocation.setText("Location: " + crewMember.getLocation());
+        holder.tvCrewLocation.setText(getLocationLabel(crewMember.getLocation()));
+        holder.progressEnergy.setMax(Math.max(1, crewMember.getMaxEnergy()));
+        holder.progressEnergy.setProgress(Math.max(0, crewMember.getEnergy()));
 
         bindAvatar(holder.ivCrewAvatar, crewMember.getSpecialization());
 
@@ -76,6 +83,44 @@ public class SelectableCrewAdapter extends RecyclerView.Adapter<SelectableCrewAd
         });
 
         holder.itemView.setOnClickListener(v -> holder.checkCrew.setChecked(!holder.checkCrew.isChecked()));
+    }
+
+    private String getLocationLabel(Location location) {
+        switch (location) {
+            case QUARTERS:
+                return "QUARTERS";
+            case SIMULATOR:
+                return "SIMULATOR";
+            case MISSION_CONTROL:
+                return "MISSION";
+            case MEDBAY:
+                return "MEDBAY";
+            default:
+                return location.name();
+        }
+    }
+
+    @ColorInt
+    private int getSpecColor(SelectableCrewViewHolder holder, Specialization specialization) {
+        int colorRes;
+        switch (specialization) {
+            case PILOT:
+                colorRes = R.color.sc_pilot;
+                break;
+            case ENGINEER:
+                colorRes = R.color.sc_engineer;
+                break;
+            case MEDIC:
+                colorRes = R.color.sc_medic;
+                break;
+            case SCIENTIST:
+                colorRes = R.color.sc_scientist;
+                break;
+            default:
+                colorRes = R.color.sc_soldier;
+                break;
+        }
+        return ContextCompat.getColor(holder.itemView.getContext(), colorRes);
     }
 
     private void bindAvatar(ImageView avatarView, Specialization specialization) {
@@ -110,6 +155,7 @@ public class SelectableCrewAdapter extends RecyclerView.Adapter<SelectableCrewAd
         TextView tvCrewSpec;
         TextView tvCrewStats;
         TextView tvCrewLocation;
+        ProgressBar progressEnergy;
 
         public SelectableCrewViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -119,6 +165,7 @@ public class SelectableCrewAdapter extends RecyclerView.Adapter<SelectableCrewAd
             tvCrewSpec = itemView.findViewById(R.id.tvCrewSpec);
             tvCrewStats = itemView.findViewById(R.id.tvCrewStats);
             tvCrewLocation = itemView.findViewById(R.id.tvCrewLocation);
+            progressEnergy = itemView.findViewById(R.id.progressEnergy);
         }
     }
 }

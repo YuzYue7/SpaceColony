@@ -3,16 +3,13 @@
     <item android:state_pressed="true">
         <shape>
             <corners android:radius="16dp" />
-            <solid android:color="@color/sc_primary_dark" />
+            <solid android:color="#D6445A" />
         </shape>
     </item>
     <item>
         <shape>
             <corners android:radius="16dp" />
-            <gradient
-                android:angle="0"
-                android:startColor="@color/sc_primary"
-                android:endColor="#355DFF" />
+            <solid android:color="@color/sc_danger" />
         </shape>
     </item>
 </selector>

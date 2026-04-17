@@ -53,25 +53,66 @@ public class Storage {
     }
 
     public boolean containsCrewName(String name) {
+        String normalized = normalizeName(name);
+        if (normalized.isEmpty()) {
+            return false;
+        }
+
         for (CrewMember crewMember : crewMap.values()) {
-            if (crewMember.getName().equalsIgnoreCase(name)) {
+            if (normalizeName(crewMember.getName()).equalsIgnoreCase(normalized)) {
                 return true;
             }
         }
         return false;
     }
 
-    public void removeDeadCrew() {
-        List<Integer> deadIds = new ArrayList<>();
-        for (Map.Entry<Integer, CrewMember> entry : crewMap.entrySet()) {
-            CrewMember crewMember = entry.getValue();
-            if (!crewMember.isAlive()) {
-                deadIds.add(entry.getKey());
-            }
+    public boolean containsCrewNameExceptId(String name, int excludedId) {
+        String normalized = normalizeName(name);
+        if (normalized.isEmpty()) {
+            return false;
         }
 
-        for (Integer id : deadIds) {
-            crewMap.remove(id);
+        for (CrewMember crewMember : crewMap.values()) {
+            if (crewMember.getId() == excludedId) {
+                continue;
+            }
+
+            if (normalizeName(crewMember.getName()).equalsIgnoreCase(normalized)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean renameCrewMember(int id, String newName) {
+        CrewMember crewMember = crewMap.get(id);
+        String normalized = normalizeName(newName);
+
+        if (crewMember == null || normalized.isEmpty()) {
+            return false;
+        }
+
+        if (containsCrewNameExceptId(normalized, id)) {
+            return false;
+        }
+
+        crewMember.setName(normalized);
+        return true;
+    }
+
+    public void moveDefeatedCrewToMedbay() {
+        for (CrewMember crewMember : crewMap.values()) {
+            if (!crewMember.isAlive()) {
+                crewMember.setLocation(Location.MEDBAY);
+            }
+        }
+    }
+
+    public void recoverCrewFromMedbay(int id) {
+        CrewMember crewMember = crewMap.get(id);
+        if (crewMember != null && crewMember.getLocation() == Location.MEDBAY) {
+            crewMember.reviveWithPenalty();
+            crewMember.setLocation(Location.QUARTERS);
         }
     }
 
@@ -81,5 +122,9 @@ public class Storage {
 
     public int size() {
         return crewMap.size();
+    }
+
+    private String normalizeName(String name) {
+        return name == null ? "" : name.trim();
     }
 }

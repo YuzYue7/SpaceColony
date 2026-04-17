@@ -26,6 +26,11 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     private TextView tvSummary;
+    private TextView tvTotalCrewValue;
+    private TextView tvQuartersValue;
+    private TextView tvSimulatorValue;
+    private TextView tvMissionValue;
+    private TextView tvMedbayValue;
     private Storage storage;
 
     public HomeFragment() {
@@ -46,6 +51,12 @@ public class HomeFragment extends Fragment {
         storage = AppRepository.getInstance().getStorage();
 
         tvSummary = view.findViewById(R.id.tvSummary);
+        tvTotalCrewValue = view.findViewById(R.id.tvTotalCrewValue);
+        tvQuartersValue = view.findViewById(R.id.tvQuartersValue);
+        tvSimulatorValue = view.findViewById(R.id.tvSimulatorValue);
+        tvMissionValue = view.findViewById(R.id.tvMissionValue);
+        tvMedbayValue = view.findViewById(R.id.tvMedbayValue);
+
         Button btnCreateDemoCrew = view.findViewById(R.id.btnCreateDemoCrew);
         Button btnRefresh = view.findViewById(R.id.btnRefresh);
         Button btnSaveGame = view.findViewById(R.id.btnSaveGame);
@@ -55,6 +66,7 @@ public class HomeFragment extends Fragment {
         Button btnGoQuarters = view.findViewById(R.id.btnGoQuarters);
         Button btnGoSimulator = view.findViewById(R.id.btnGoSimulator);
         Button btnGoMissionControl = view.findViewById(R.id.btnGoMissionControl);
+        Button btnGoMedbay = view.findViewById(R.id.btnGoMedbay);
         Button btnGoStatistics = view.findViewById(R.id.btnGoStatistics);
 
         btnCreateDemoCrew.setOnClickListener(v -> {
@@ -111,6 +123,13 @@ public class HomeFragment extends Fragment {
                 requireActivity().getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.fragmentContainer, new MissionControlFragment())
+                        .commit()
+        );
+
+        btnGoMedbay.setOnClickListener(v ->
+                requireActivity().getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer, new MedbayFragment())
                         .commit()
         );
 
@@ -179,12 +198,14 @@ public class HomeFragment extends Fragment {
         int missionControl = storage.getByLocation(Location.MISSION_CONTROL).size();
         int medbay = storage.getByLocation(Location.MEDBAY).size();
 
-        String summary = "Total crew members: " + total + "\n"
-                + "Quarters: " + quarters + "\n"
-                + "Simulator: " + simulator + "\n"
-                + "Mission Control: " + missionControl + "\n"
-                + "Medbay: " + medbay + "\n\n"
-                + "Manage your colony from the sections below.";
+        tvTotalCrewValue.setText(String.valueOf(total));
+        tvQuartersValue.setText(String.valueOf(quarters));
+        tvSimulatorValue.setText(String.valueOf(simulator));
+        tvMissionValue.setText(String.valueOf(missionControl));
+        tvMedbayValue.setText(String.valueOf(medbay));
+
+        String summary = "Crew distributed across colony systems.\n"
+                + "Use the navigation buttons below to recruit, train, deploy, recover, and review performance.";
 
         tvSummary.setText(summary);
     }

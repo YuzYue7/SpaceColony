@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_app_gradient"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -10,33 +11,65 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Quarters"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="12dp" />
+        android:textColor="@color/sc_text_primary"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnMoveToSimulator"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="14dp"
+        android:text="Resting crew recover energy here"
+        android:textColor="@color/sc_text_secondary"
+        android:textSize="14sp" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Move Selected to Simulator"
-        android:layout_marginBottom="8dp" />
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical"
+        android:padding="14dp">
 
-    <Button
-        android:id="@+id/btnMoveToMissionControl"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Move Selected to Mission Control"
-        android:layout_marginBottom="8dp" />
+        <Button
+            android:id="@+id/btnMoveToSimulator"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@drawable/bg_button_primary"
+            android:text="Move Selected to Simulator"
+            android:textAllCaps="false"
+            android:textColor="@color/sc_text_on_primary"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnBackHomeFromQuarters"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Back to Home"
-        android:layout_marginBottom="12dp" />
+        <Button
+            android:id="@+id/btnMoveToMissionControl"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button_secondary"
+            android:text="Move Selected to Mission Control"
+            android:textAllCaps="false"
+            android:textColor="@color/sc_text_primary"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnBackHomeFromQuarters"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_button_secondary"
+            android:text="Back to Home"
+            android:textAllCaps="false"
+            android:textColor="@color/sc_text_primary"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerQuarters"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
 </LinearLayout>

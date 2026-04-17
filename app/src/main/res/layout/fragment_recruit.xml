@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_app_gradient"
+    android:fillViewport="true">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -13,36 +15,224 @@
             android:id="@+id/tvRecruitTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Recruit Crew Member"
-            android:textSize="24sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="16dp" />
+            android:text="Recruit Crew"
+            android:textColor="@color/sc_text_primary"
+            android:textSize="28sp"
+            android:textStyle="bold" />
 
-        <EditText
-            android:id="@+id/etCrewName"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:layout_marginBottom="16dp"
+            android:text="Create a new specialist for your colony"
+            android:textColor="@color/sc_text_secondary"
+            android:textSize="14sp" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Enter crew member name"
-            android:layout_marginBottom="12dp" />
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <Spinner
-            android:id="@+id/spinnerSpecialization"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Crew Name"
+                android:textColor="@color/sc_text_secondary"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etCrewName"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input"
+                android:hint="Enter crew member name"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:textColor="@color/sc_text_primary"
+                android:textColorHint="@color/sc_text_muted" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Specialization"
+                android:textColor="@color/sc_text_secondary"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/spinnerSpecialization"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/bg_input"
+                android:popupBackground="@color/sc_surface_alt" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Class Reference"
+                android:textColor="@color/sc_text_secondary"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="horizontal"
+                android:weightSum="5">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_mini_card"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_pilot"
+                        android:contentDescription="Pilot" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Pilot"
+                        android:textColor="@color/sc_pilot"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_mini_card"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_engineer"
+                        android:contentDescription="Engineer" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Engineer"
+                        android:textColor="@color/sc_engineer"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_mini_card"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_medic"
+                        android:contentDescription="Medic" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Medic"
+                        android:textColor="@color/sc_medic"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_mini_card"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_scientist"
+                        android:contentDescription="Scientist" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Scientist"
+                        android:textColor="@color/sc_scientist"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal">
+
+                    <ImageView
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_mini_card"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_soldier"
+                        android:contentDescription="Soldier" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Soldier"
+                        android:textColor="@color/sc_soldier"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
 
         <Button
             android:id="@+id/btnCreateCrew"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="56dp"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_button_primary"
             android:text="Create Crew Member"
-            android:layout_marginBottom="12dp" />
+            android:textAllCaps="false"
+            android:textColor="@color/sc_text_on_primary"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/btnBackHomeFromRecruit"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Back to Home" />
-
+            android:layout_height="54dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_button_secondary"
+            android:text="Back to Home"
+            android:textAllCaps="false"
+            android:textColor="@color/sc_text_primary"
+            android:textStyle="bold" />
     </LinearLayout>
 </ScrollView>

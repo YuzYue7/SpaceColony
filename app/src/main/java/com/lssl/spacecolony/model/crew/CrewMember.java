@@ -127,8 +127,9 @@ public abstract class CrewMember {
 
     public void reviveWithPenalty() {
         alive = true;
-        energy = maxEnergy / 2;
+        energy = Math.max(1, maxEnergy / 2);
         experience = Math.max(0, experience - 1);
+        defending = false;
     }
 
     public int getId() {

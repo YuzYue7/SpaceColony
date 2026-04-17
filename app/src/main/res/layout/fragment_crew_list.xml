@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_app_gradient"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -9,20 +10,67 @@
         android:id="@+id/tvCrewListTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Crew List"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        android:layout_marginBottom="12dp" />
+        android:text="Crew Management"
+        android:textColor="@color/sc_text_primary"
+        android:textSize="28sp"
+        android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/btnBackHomeFromList"
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="14dp"
+        android:text="Tap a crew card to open detail. Quick rename format: oldName,newName"
+        android:textColor="@color/sc_text_secondary"
+        android:textSize="14sp" />
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back to Home"
-        android:layout_marginBottom="12dp" />
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_card"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <EditText
+            android:id="@+id/etRenameCrew"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_input"
+            android:hint="Quick rename: oldName,newName"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:textColor="@color/sc_text_primary"
+            android:textColorHint="@color/sc_text_muted" />
+
+        <Button
+            android:id="@+id/btnRenameCrew"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_button_primary"
+            android:text="Quick Rename"
+            android:textAllCaps="false"
+            android:textColor="@color/sc_text_on_primary"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/btnBackHomeFromList"
+            android:layout_width="match_parent"
+            android:layout_height="54dp"
+            android:background="@drawable/bg_button_secondary"
+            android:text="Back to Home"
+            android:textAllCaps="false"
+            android:textColor="@color/sc_text_primary"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerCrew"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingBottom="8dp" />
 </LinearLayout>

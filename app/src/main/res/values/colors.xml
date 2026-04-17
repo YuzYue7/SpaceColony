@@ -3,25 +3,29 @@
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
 
-    <color name="sc_background">#F4F1F8</color>
-    <color name="sc_surface">#FFFFFF</color>
-    <color name="sc_surface_alt">#EEE8F5</color>
+    <color name="sc_background">#07111F</color>
+    <color name="sc_background_alt">#0D1830</color>
+    <color name="sc_surface">#0F213C</color>
+    <color name="sc_surface_alt">#132848</color>
+    <color name="sc_surface_line">#20395F</color>
 
-    <color name="sc_primary">#6C4AB6</color>
-    <color name="sc_primary_dark">#55349A</color>
-    <color name="sc_accent">#5DA9E9</color>
+    <color name="sc_primary">#6D4CFF</color>
+    <color name="sc_primary_dark">#5537DD</color>
+    <color name="sc_accent">#23C9FF</color>
 
-    <color name="sc_text_primary">#1F1B24</color>
-    <color name="sc_text_secondary">#5F5A66</color>
+    <color name="sc_text_primary">#F5F8FF</color>
+    <color name="sc_text_secondary">#A8B7D9</color>
+    <color name="sc_text_muted">#6F82A8</color>
     <color name="sc_text_on_primary">#FFFFFF</color>
 
-    <color name="sc_success">#2E9E5B</color>
-    <color name="sc_warning">#E7A93B</color>
-    <color name="sc_danger">#D9534F</color>
+    <color name="sc_success">#27D07D</color>
+    <color name="sc_warning">#F0A329</color>
+    <color name="sc_danger">#FF5A72</color>
+    <color name="sc_info">#4EA1FF</color>
 
-    <color name="sc_pilot">#5DA9E9</color>
-    <color name="sc_engineer">#E7A93B</color>
-    <color name="sc_medic">#41B883</color>
-    <color name="sc_scientist">#8B5CF6</color>
-    <color name="sc_soldier">#D9534F</color>
+    <color name="sc_pilot">#56B6FF</color>
+    <color name="sc_engineer">#F0A329</color>
+    <color name="sc_medic">#2ED58C</color>
+    <color name="sc_scientist">#9D6BFF</color>
+    <color name="sc_soldier">#FF5A72</color>
 </resources>

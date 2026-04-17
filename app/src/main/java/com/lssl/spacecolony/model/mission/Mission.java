@@ -66,6 +66,7 @@ public class Mission {
         if (actor == null) {
             missionFinished = true;
             recordMissionFailure();
+            moveDefeatedCrewToMedbay();
             logs.add("Mission failed. All crew members lost.");
             stepLogs.add("Mission failed. All crew members lost.");
             return stepLogs;
@@ -111,6 +112,7 @@ public class Mission {
             logs.add("The threat has been neutralized!");
             stepLogs.add("The threat has been neutralized!");
             rewardSurvivors();
+            moveDefeatedCrewToMedbay();
             moveSurvivorsToMissionControl();
             return stepLogs;
         }
@@ -130,7 +132,9 @@ public class Mission {
             stepLogs.add(energyMsg);
 
             if (!target.isAlive()) {
-                String defeatMsg = target.getName() + " has been defeated.";
+                target.setLocation(Location.MEDBAY);
+
+                String defeatMsg = target.getName() + " has been defeated and moved to Medbay.";
                 logs.add(defeatMsg);
                 stepLogs.add(defeatMsg);
             }
@@ -139,13 +143,13 @@ public class Mission {
         if (!hasAliveCrew()) {
             missionFinished = true;
             recordMissionFailure();
+            moveDefeatedCrewToMedbay();
             logs.add("Mission failed. All crew members lost.");
             stepLogs.add("Mission failed. All crew members lost.");
             return stepLogs;
         }
 
         advanceToNextActor();
-
         return stepLogs;
     }
 
@@ -201,6 +205,10 @@ public class Mission {
         return threat;
     }
 
+    public MissionType getMissionType() {
+        return missionType;
+    }
+
     public boolean isMissionFinished() {
         return missionFinished;
     }
@@ -211,6 +219,30 @@ public class Mission {
 
     public List<String> getLogs() {
         return logs;
+    }
+
+    public List<CrewMember> getCrewList() {
+        return crewList;
+    }
+
+    public List<CrewMember> getSurvivors() {
+        List<CrewMember> survivors = new ArrayList<>();
+        for (CrewMember crewMember : crewList) {
+            if (crewMember != null && crewMember.isAlive()) {
+                survivors.add(crewMember);
+            }
+        }
+        return survivors;
+    }
+
+    public List<CrewMember> getDefeatedCrew() {
+        List<CrewMember> defeated = new ArrayList<>();
+        for (CrewMember crewMember : crewList) {
+            if (crewMember != null && !crewMember.isAlive()) {
+                defeated.add(crewMember);
+            }
+        }
+        return defeated;
     }
 
     private CrewMember getAllyOf(CrewMember current) {
@@ -254,6 +286,14 @@ public class Mission {
         for (CrewMember crewMember : crewList) {
             if (crewMember != null && crewMember.isAlive()) {
                 crewMember.setLocation(Location.MISSION_CONTROL);
+            }
+        }
+    }
+
+    private void moveDefeatedCrewToMedbay() {
+        for (CrewMember crewMember : crewList) {
+            if (crewMember != null && !crewMember.isAlive()) {
+                crewMember.setLocation(Location.MEDBAY);
             }
         }
     }

@@ -12,46 +12,55 @@
         android:padding="16dp">
 
         <TextView
-            android:id="@+id/tvStatisticsTitle"
+            android:id="@+id/tvResultTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Statistics"
+            android:text="Mission Result"
             android:textColor="@color/sc_text_primary"
             android:textSize="28sp"
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/tvResultStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:layout_marginBottom="14dp"
-            android:text="Track colony progress and crew performance"
+            android:layout_marginTop="10dp"
+            android:text="VICTORY"
+            android:textColor="@color/sc_success"
+            android:textSize="26sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvThreatSummary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Threat summary"
             android:textColor="@color/sc_text_secondary"
             android:textSize="14sp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/bg_card"
             android:orientation="vertical"
             android:padding="16dp">
 
             <TextView
-                android:id="@+id/tvColonyStatsTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Colony Summary"
+                android:text="Survivors"
                 android:textColor="@color/sc_text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvColonyStats"
+                android:id="@+id/tvSurvivors"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Colony statistics will appear here"
+                android:layout_marginTop="10dp"
+                android:text="No survivors"
                 android:textColor="@color/sc_text_secondary"
                 android:textSize="14sp" />
         </LinearLayout>
@@ -59,7 +68,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
+            android:layout_marginTop="12dp"
             android:background="@drawable/bg_card"
             android:orientation="vertical"
             android:padding="16dp">
@@ -67,83 +76,63 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Performance Overview"
-                android:textColor="@color/sc_text_primary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <com.github.mikephil.charting.charts.BarChart
-                android:id="@+id/barChartStats"
-                android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:layout_marginTop="10dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:background="@drawable/bg_card"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Crew Location Distribution"
-                android:textColor="@color/sc_text_primary"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <com.github.mikephil.charting.charts.PieChart
-                android:id="@+id/pieChartLocations"
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:layout_marginTop="10dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:background="@drawable/bg_card"
-            android:orientation="vertical"
-            android:padding="16dp">
-
-            <TextView
-                android:id="@+id/tvCrewStatsTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Crew Statistics"
+                android:text="Defeated Crew"
                 android:textColor="@color/sc_text_primary"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/tvCrewStats"
+                android:id="@+id/tvDefeated"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
-                android:text="Crew statistics will appear here"
+                android:layout_marginTop="10dp"
+                android:text="No defeated crew"
                 android:textColor="@color/sc_text_secondary"
                 android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_card"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mission Log Summary"
+                android:textColor="@color/sc_text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvLogSummary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Mission summary"
+                android:textColor="@color/sc_text_secondary"
+                android:textSize="13sp" />
         </LinearLayout>
 
         <Button
-            android:id="@+id/btnRefreshStatistics"
+            android:id="@+id/btnBackToMissionControl"
             android:layout_width="match_parent"
             android:layout_height="54dp"
+            android:layout_marginTop="16dp"
             android:background="@drawable/bg_button_primary"
-            android:text="Refresh Statistics"
+            android:text="Return to Mission Control"
             android:textAllCaps="false"
             android:textColor="@color/sc_text_on_primary"
             android:textStyle="bold" />
 
         <Button
-            android:id="@+id/btnBackHomeFromStatistics"
+            android:id="@+id/btnBackHomeFromResult"
             android:layout_width="match_parent"
             android:layout_height="54dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="10dp"
             android:background="@drawable/bg_button_secondary"
             android:text="Back to Home"
             android:textAllCaps="false"

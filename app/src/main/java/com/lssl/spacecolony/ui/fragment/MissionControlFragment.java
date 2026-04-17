@@ -146,20 +146,51 @@ public class MissionControlFragment extends Fragment {
         currentMission.performTurn(actionType);
         tvMissionLog.setText(TextUtils.join("\n", currentMission.getLogs()));
 
-        if (currentMission.isMissionFinished() && currentMission.isMissionSuccess()) {
-            ThreatFactory.recordMissionSuccess();
-        }
-
         if (currentMission.isMissionFinished()) {
-            storage.removeDeadCrew();
-            refreshList();
+            if (currentMission.isMissionSuccess()) {
+                ThreatFactory.recordMissionSuccess();
+            }
 
-            Toast.makeText(requireContext(),
-                    currentMission.isMissionSuccess() ? "Mission success" : "Mission failed",
-                    Toast.LENGTH_SHORT).show();
+            storage.moveDefeatedCrewToMedbay();
+            refreshList();
+            updateMissionUi();
+            openMissionResultScreen();
+            return;
         }
 
         updateMissionUi();
+    }
+
+    private void openMissionResultScreen() {
+        if (currentMission == null) {
+            return;
+        }
+
+        String survivorsText = MissionResultFragment.buildCrewSummary(
+                currentMission.getSurvivors(),
+                currentMission.isMissionSuccess()
+        );
+
+        String defeatedText = MissionResultFragment.buildCrewSummary(
+                currentMission.getDefeatedCrew(),
+                false
+        );
+
+        String logSummary = MissionResultFragment.buildLogSummary(currentMission.getLogs());
+
+        MissionResultFragment resultFragment = MissionResultFragment.newInstance(
+                currentMission.isMissionSuccess(),
+                currentMission.getThreat().getName(),
+                currentMission.getMissionType().name(),
+                survivorsText,
+                defeatedText,
+                logSummary
+        );
+
+        requireActivity().getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentContainer, resultFragment)
+                .commit();
     }
 
     private void updateMissionUi() {
